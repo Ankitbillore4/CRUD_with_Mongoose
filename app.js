@@ -27,13 +27,23 @@ let CreatedUser =  await userModel.create({
     imageUrl
 })
 console.log("created user");
-
 res.redirect("/read");
 })
 
 app.get("/delete/:id", async (req, res) => {
 let users = await userModel.findOneAndDelete({_id:req.params.id})
 res.redirect("/read");
+})
+
+app.get("/edit/:userid",async (req,res)=>{
+  let user = await userModel.findOne({_id:req.params.userid})
+  res.render("edit",{user})
+})
+
+app.post("/update/:id", async (req,res)=>{
+  let {name,email,age,imageUrl} = req.body;
+  let user =  await userModel.findOneAndUpdate({_id:req.params.id},{name,email,age,imageUrl},{new : true});
+ res.redirect("/");
 })
 
 
