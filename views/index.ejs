@@ -5,6 +5,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tailwind Form</title>
+    <link
+    href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css"
+    rel="stylesheet"
+/>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
@@ -36,7 +40,10 @@
 
         <!-- image URL Field -->
         <div class="mb-4">
-            <label for="image" class="block text-gray-700 text-sm font-bold mb-2">Image Url</label>
+            <div class="flex justify-between">
+                <label for="image" class="block text-gray-700 text-sm font-bold mb-2">Image Url</label>
+             <a class="font-bold text-gray-500 text-sm " href="https://www.google.com"> <i class="ri-search-line mr-[0.5vw]"></i>Search Image</a>
+            </div>
             <input type="url" id="image" name="imageUrl" placeholder="Enter Image Url"
                 class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
         </div>
