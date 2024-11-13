@@ -12,13 +12,28 @@ app.get('/', (req, res) => {
   res.render('index');
 });
 
-app.get("/create", async (req, res) => {
-  let user = await userModel.create({
-    name: "John Doe",
-    email: "john@example.com",
-    age: 25
-  })
-  res.send(user);
+
+app.get("/read", async (req, res) => {
+    let users = await userModel.find();
+   res.render("read", {users});
+})
+
+app.post("/create",async (req,res)=>{
+  let {name,email,age,imageUrl} = req.body;
+let CreatedUser =  await userModel.create({
+    name,
+    email,
+    age,
+    imageUrl
+})
+console.log("created user");
+
+res.redirect("/read");
+})
+
+app.get("/delete/:id", async (req, res) => {
+let users = await userModel.findOneAndDelete({_id:req.params.id})
+res.redirect("/read");
 })
 
 
